@@ -1,0 +1,1217 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #0b1038;
+  --navy-soft: #11184d;
+  --gold: #c9a354;
+  --gold-dark: #9c7831;
+  --paper: #f8f5ee;
+  --paper-2: #f2eee4;
+  --ink: #101b3c;
+  --muted: #827d72;
+  --line: #d9ccb0;
+  --marsala: #813044;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--ink);
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.site {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition:
+    transform 900ms cubic-bezier(.77,0,.18,1),
+    opacity 600ms ease,
+    visibility 0s linear 900ms;
+}
+
+.page.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition-delay: 0s;
+}
+
+.page.previous {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+}
+
+
+/* First page — couple photo */
+.page-couple {
+  background: var(--navy);
+}
+
+.couple-photo-panel {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 33.333% 66.667%;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.couple-black-panel {
+  position: relative;
+  background: var(--navy);
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(28px, 5vw, 70px);
+  z-index: 2;
+}
+
+.couple-info {
+  color: #f7f3eb;
+  max-width: 360px;
+  text-align: left;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(18px, 2vw, 28px);
+  line-height: 1.12;
+}
+
+.couple-info p {
+  margin: 0 0 10px;
+  letter-spacing: 0;
+}
+
+.couple-info .couple-names {
+  color: var(--gold);
+  font-size: clamp(30px, 4vw, 58px);
+  line-height: .95;
+  margin-bottom: 18px;
+}
+
+.couple-info strong {
+  font-weight: 500;
+}
+
+.couple-photo-area {
+  position: relative;
+  overflow: hidden;
+  background: #d9d3c8;
+}
+
+.couple-photo-placeholder,
+.couple-photo-placeholder img {
+  width: 100%;
+  height: 100%;
+}
+
+.couple-photo-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(20,27,56,.12), rgba(201,163,84,.12)),
+    #ddd8cf;
+  color: #746f67;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-align: center;
+}
+
+.couple-photo-placeholder img {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  display: block;
+}
+
+.couple-circle {
+  position: absolute;
+  z-index: 5;
+  left: 33.333%;
+  top: 50%;
+  width: clamp(150px, 18vw, 290px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  padding: 8px;
+  background: var(--paper);
+  box-shadow: 0 14px 40px rgba(0,0,0,.28);
+}
+
+.couple-circle-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #d9d3c8;
+  color: #746f67;
+  font-family: Montserrat, sans-serif;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-align: center;
+}
+
+.couple-circle-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pages */
+.page-invitation,
+.page-dress,
+.page-gift,
+.page-rsvp {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201,163,84,.08), transparent 32%),
+    var(--paper-2);
+}
+
+.paper-page {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(90,75,50,.018) 0 2px, transparent 2px 5px),
+    var(--paper);
+  overflow: hidden;
+}
+
+.page-content,
+.content-narrow,
+.content-form {
+  width: min(920px, 90vw);
+  margin: 0 auto;
+  text-align: center;
+  padding: 34px 0 82px;
+  min-height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  margin: 8px 0 12px;
+  color: var(--gold-dark);
+  font-size: 10px;
+  letter-spacing: .42em;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+}
+
+.page-content h1 {
+  font-size: clamp(24px, 2.7vw, 38px);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--navy);
+}
+
+.date {
+  margin-top: 8px;
+  color: #162c83;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 600;
+  font-kerning: normal;
+  letter-spacing: .01em;
+  line-height: 1.05;
+}
+
+.time {
+  margin-top: 6px;
+  color: #162c83;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(21px, 2.45vw, 29px);
+  font-weight: 600;
+  font-kerning: normal;
+  letter-spacing: .015em;
+  line-height: 1.05;
+}
+
+.countdown {
+  margin: 15px 0 18px;
+}
+
+.countdown-title {
+  display: block;
+  color: var(--gold-dark);
+  font-size: 10px;
+  letter-spacing: .18em;
+  margin-bottom: 7px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 430px;
+  margin: 0 auto;
+}
+
+.count-box {
+  min-width: 0;
+  padding: 8px 5px 7px;
+  border: 1px solid rgba(156,120,49,.58);
+  border-radius: 12px;
+  background: rgba(255,255,255,.46);
+  box-shadow: 0 3px 10px rgba(20,27,60,.06);
+}
+
+.count-box strong {
+  display: block;
+  color: #162c83;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  line-height: .95;
+  letter-spacing: .01em;
+  font-kerning: normal;
+}
+
+.count-box small {
+  display: block;
+  margin-top: 4px;
+  color: #8d7a52;
+  font-family: "Montserrat", sans-serif;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: 1;
+}
+
+.leaf-corner {
+  position: absolute;
+  width: clamp(260px, 34vw, 430px);
+  height: clamp(260px, 34vw, 430px);
+  border: 1px solid rgba(35,57,122,.48);
+  border-radius: 50%;
+  opacity: .72;
+  pointer-events: none;
+}
+
+.leaf-top-left {
+  left: -190px;
+  top: -185px;
+}
+
+.leaf-top-left::after,
+.leaf-bottom-right::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(201,163,84,.42);
+  border-radius: 50%;
+}
+
+.leaf-bottom-right {
+  right: -190px;
+  bottom: -185px;
+  transform: rotate(180deg);
+}
+
+.photo-slider {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  width: 100%;
+  margin: 24px auto 14px;
+  padding: 8px 0;
+}
+
+/* Bordas suaves e pequenos detalhes dourados para a faixa de fotos
+   terminar com delicadeza, sem parecer que as imagens foram cortadas. */
+.photo-slider::before,
+.photo-slider::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: clamp(24px, 4vw, 52px);
+  pointer-events: none;
+}
+
+.photo-slider::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--paper) 0%, rgba(248,245,238,.88) 28%, rgba(248,245,238,0) 100%);
+}
+
+.photo-slider::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--paper) 0%, rgba(248,245,238,.88) 28%, rgba(248,245,238,0) 100%);
+}
+
+.photo-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: photosLoop 34s linear infinite;
+}
+
+.photo-card {
+  width: clamp(145px, 17vw, 205px);
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  padding: 9px;
+  box-shadow: 0 10px 25px rgba(26,26,40,.08);
+  transform: rotate(-1deg);
+}
+
+.photo-card:nth-child(2n) {
+  transform: rotate(1.2deg);
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  background: #f4f2ed;
+  color: #aaa49a;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+@keyframes photosLoop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.location p {
+  margin: 0 0 4px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-style: italic;
+  color: #162c83;
+}
+
+.location strong {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 500;
+  color: #162c83;
+  margin-bottom: 8px;
+}
+
+
+.location .gold-button {
+  margin-top: 4px;
+}
+
+.gold-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 30px;
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: .18em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.gold-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* Dress */
+.content-narrow {
+  padding-top: 9vh;
+}
+
+.content-narrow h2,
+.content-form h2 {
+  margin: 0;
+  color: #0c1b37;
+  font-size: clamp(52px, 7vw, 82px);
+  line-height: .88;
+}
+
+.lead {
+  max-width: 760px;
+  margin: 24px auto;
+  color: #817d74;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.dress-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin: 38px 0 22px;
+}
+
+.dress-card {
+  min-height: 190px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.65);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.color-circle {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 4px solid var(--paper);
+  outline: 1px solid var(--gold);
+  margin-bottom: 16px;
+}
+
+.color-circle.navy { background: #0b2340; }
+.color-circle.marsala { background: var(--marsala); }
+
+.dress-card small {
+  color: #a3957e;
+  letter-spacing: .25em;
+  font-size: 9px;
+}
+
+.dress-card h3 {
+  margin: 7px 0 0;
+  color: #17253e;
+  font-size: 24px;
+}
+
+.dress-note {
+  color: #888277;
+  font-size: 11px;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+/* Gift */
+.pix-card {
+  width: min(420px, 90vw);
+  margin: 12px auto;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.5);
+  padding: 16px 18px 20px;
+  box-sizing: border-box;
+}
+
+.qr-wrap {
+  display: grid;
+  place-items: center;
+  margin-bottom: 16px;
+}
+
+.qr-placeholder {
+  width: 190px;
+  height: 190px;
+  border: 1px dashed #b9a47a;
+  display: grid;
+  place-items: center;
+  color: #a99c83;
+  font-size: 10px;
+  letter-spacing: .18em;
+  line-height: 1.6;
+}
+
+#pixQr canvas,
+#pixQr img {
+  width: 180px !important;
+  height: 180px !important;
+  display: block;
+}
+
+.copy-button {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  min-width: 170px;
+}
+
+.copy-feedback {
+  display: block;
+  min-height: 18px;
+  margin-top: 8px;
+  color: #7a632f;
+  font-size: 10px;
+}
+
+/* Form */
+.content-form {
+  padding-top: 5vh;
+}
+
+.content-form .lead {
+  margin-top: 16px;
+}
+
+.rsvp-extra[hidden] {
+  display: none !important;
+}
+
+#rsvpForm {
+  width: min(620px, 90vw);
+  margin: 18px auto 0;
+  text-align: left;
+}
+
+#rsvpForm label {
+  display: block;
+  margin: 0 0 11px;
+}
+
+#rsvpForm label span {
+  display: block;
+  margin-bottom: 7px;
+  color: #8e877a;
+  font-size: 9px;
+  letter-spacing: .16em;
+}
+
+#rsvpForm input,
+#rsvpForm select,
+#rsvpForm textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #d9ccb0;
+  background: rgba(255,255,255,.65);
+  color: #25304a;
+  outline: none;
+  padding: 13px 14px;
+  font-size: 12px;
+}
+
+#rsvpForm textarea {
+  resize: vertical;
+}
+
+#rsvpForm input:focus,
+#rsvpForm select:focus,
+#rsvpForm textarea:focus {
+  border-color: var(--gold);
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.form-status {
+  text-align: center;
+  min-height: 24px;
+  margin-top: 14px;
+  color: #78612e;
+  font-size: 11px;
+}
+
+
+.page-rsvp .content-form h2 {
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: .92;
+  letter-spacing: 0;
+}
+
+.page-rsvp .content-form .lead {
+  max-width: 650px;
+  margin: 12px auto;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.page-rsvp #rsvpForm {
+  margin-top: 14px;
+}
+
+.page-rsvp #rsvpForm label {
+  margin-bottom: 9px;
+}
+
+.page-rsvp #rsvpForm input,
+.page-rsvp #rsvpForm select,
+.page-rsvp #rsvpForm textarea {
+  padding: 10px 12px;
+}
+
+/* Mensagem final após RSVP */
+.page-response {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(201,163,84,.08), transparent 32%),
+    var(--paper-2);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.response-content {
+  width: min(760px, 88vw);
+  padding: 30px;
+}
+
+.response-content h2 {
+  margin: 8px 0 18px;
+  color: var(--navy);
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(46px, 6vw, 78px);
+  font-weight: 400;
+  line-height: .98;
+}
+
+.response-text {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #6f6a61;
+  font-family: Montserrat, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.response-mark {
+  margin-top: 28px;
+  color: var(--gold);
+  font-size: 32px;
+}
+
+.next-arrow,
+.prev-arrow {
+  position: absolute;
+  z-index: 20;
+  bottom: 24px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  background: var(--navy);
+  color: #f8e6b3;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.next-arrow:hover,
+.prev-arrow:hover {
+  transform: translateY(-2px);
+  background: #121b54;
+}
+
+.next-arrow { right: 32px; }
+.prev-arrow { left: 32px; }
+
+
+@media (max-width: 700px) {
+  .page-content,
+  .content-narrow,
+  .content-form {
+    padding-top: 28px;
+    padding-bottom: 78px;
+  }
+
+  .couple-photo-panel {
+    grid-template-columns: 38% 62%;
+  }
+
+  .couple-black-panel {
+    padding: 22px;
+  }
+
+  .couple-info {
+    font-size: 16px;
+  }
+
+  .couple-info .couple-names {
+    font-size: 30px;
+  }
+
+  .couple-circle {
+    left: 38%;
+    width: 145px;
+  }
+
+
+.date {
+    font-size: 58px;
+  }
+
+  .dress-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 25px;
+  }
+
+  .dress-card {
+    min-height: 150px;
+  }
+
+  .content-narrow h2,
+  .content-form h2 {
+    font-size: 51px;
+  }
+
+  .next-arrow,
+  .prev-arrow {
+    bottom: 18px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .next-arrow { right: 18px; }
+  .prev-arrow { left: 18px; }
+
+  .photo-card {
+    width: 155px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page,
+  .envelope-panel,
+  .photo-track {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Refinamento visual — tipografia, acabamento e confirmação com Pix */
+:root {
+  --navy: #101b3d;
+  --navy-soft: #1a2a50;
+  --gold: #c6a15b;
+  --gold-dark: #8f6d32;
+  --paper: #fbf9f4;
+  --paper-2: #f5f1e8;
+  --ink: #202b43;
+  --muted: #777468;
+  --line: #dfd2b8;
+}
+
+html, body, button, input, select, textarea {
+  font-family: "Montserrat", sans-serif;
+}
+
+body { letter-spacing: .005em; }
+
+h1, h2, h3, .couple-names, .date, .response-content h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -.025em;
+}
+
+.eyebrow, .countdown-title, .count-box small, .dress-card small,
+#rsvpForm label span, .time {
+  letter-spacing: .19em;
+  font-weight: 600;
+}
+
+.gold-button {
+  border: 1px solid var(--gold);
+  background: linear-gradient(135deg, #d8bb7b, #b99149);
+  color: #17213c;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  padding: 14px 23px;
+  box-shadow: 0 5px 16px rgba(16, 27, 61, .08);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.gold-button:hover {
+  filter: brightness(1.035);
+  box-shadow: 0 8px 20px rgba(16, 27, 61, .13);
+}
+.gold-button:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold-dark);
+  outline-offset: 3px;
+}
+
+.page-response {
+  overflow-y: auto;
+  padding: 28px 0 34px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(198,161,91,.13), transparent 44%),
+    var(--paper-2);
+}
+.response-content {
+  width: min(760px, 90vw);
+  margin: auto;
+  padding: 28px 20px 32px;
+}
+.response-content h2 {
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: .98;
+}
+.response-text {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.response-mark {
+  margin-top: 18px;
+  font-size: 30px;
+}
+.pix-after-confirmation {
+  width: min(520px, 100%);
+  margin: 10px auto 0;
+  animation: pix-appear .45s ease both;
+}
+.pix-after-confirmation[hidden] { display: none !important; }
+.pix-divider {
+  width: 54px;
+  height: 1px;
+  margin: 22px auto 20px;
+  background: var(--gold);
+}
+.pix-eyebrow { margin-bottom: 5px; }
+.pix-title {
+  margin: 4px 0 8px;
+  color: var(--navy);
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.05;
+}
+.pix-message {
+  max-width: 480px;
+  margin: 0 auto 16px;
+  color: #706c62;
+  font-size: 12px;
+  line-height: 1.75;
+}
+.pix-card {
+  width: min(340px, 100%);
+  margin: 0 auto;
+  padding: 18px 18px 14px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 10px 30px rgba(16,27,61,.045);
+}
+.qr-placeholder {
+  border: 0;
+  width: 190px;
+  height: 190px;
+  background: white;
+}
+#pixQr canvas, #pixQr img {
+  width: 180px !important;
+  height: 180px !important;
+  object-fit: contain;
+}
+.copy-feedback { font-size: 11px; }
+.response-back {
+  display: inline-block;
+  margin-top: 22px;
+  background: transparent;
+  color: var(--navy);
+  box-shadow: none;
+}
+.response-back:hover { background: rgba(198,161,91,.12); }
+
+#rsvpForm input, #rsvpForm select, #rsvpForm textarea {
+  border-radius: 2px;
+  font-size: 13px;
+  transition: border-color .2s ease, background .2s ease;
+}
+#rsvpForm input:focus, #rsvpForm select:focus, #rsvpForm textarea:focus {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(198,161,91,.12);
+}
+
+@keyframes pix-appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 700px) {
+  .page-response { padding-top: 12px; }
+  .response-content { padding: 18px 8px 28px; }
+  .pix-divider { margin-top: 18px; }
+  .pix-card { padding: 14px 12px 10px; }
+  .qr-placeholder { width: 174px; height: 174px; }
+  #pixQr canvas, #pixQr img { width: 166px !important; height: 166px !important; }
+  .response-back { margin-top: 18px; }
+}
+
+
+/* Toque final: tipografia mais delicada e flores minimalistas */
+h1, h2, h3,
+.couple-info .couple-names,
+.date, .time,
+.response-content h2,
+.pix-title {
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.035em;
+}
+
+.page-content h1 {
+  text-transform: none;
+  letter-spacing: -.035em;
+  line-height: 1.16;
+  font-size: clamp(27px, 3.1vw, 43px);
+}
+
+.couple-info .couple-names {
+  font-size: clamp(34px, 4.1vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+
+.date, .time { font-weight: 400; }
+
+/* Ilustração botânica em traço fino, sem competir com o convite. */
+.leaf-corner {
+  width: clamp(145px, 20vw, 235px);
+  height: clamp(145px, 20vw, 235px);
+  border: 0;
+  border-radius: 0;
+  opacity: .78;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240' fill='none' stroke='%23b69a65' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 224C45 191 63 157 76 119S101 50 153 13'/%3E%3Cpath d='M36 197C23 178 20 161 23 146C39 153 47 168 36 197Z'/%3E%3Cpath d='M53 170C38 150 39 132 47 118C61 133 65 151 53 170Z'/%3E%3Cpath d='M68 139C57 119 60 102 70 90C81 107 81 124 68 139Z'/%3E%3Cpath d='M82 105C74 87 80 69 92 60C99 78 95 94 82 105Z'/%3E%3Cpath d='M104 69C103 49 114 35 130 31C132 49 122 63 104 69Z'/%3E%3Cpath d='M24 211C43 207 59 211 69 224C51 231 36 225 24 211Z'/%3E%3Cpath d='M44 183C64 177 80 183 88 198C69 204 54 197 44 183Z'/%3E%3Cpath d='M63 151C81 144 97 150 104 164C87 171 73 164 63 151Z'/%3E%3Cpath d='M82 116C99 108 114 113 122 127C106 135 91 128 82 116Z'/%3E%3Cpath d='M104 78C120 69 136 73 144 86C128 96 113 89 104 78Z'/%3E%3Cpath d='M149 37C148 25 156 16 167 14C168 26 161 35 149 37Z'/%3E%3Cpath d='M169 52C180 45 192 48 197 58C186 65 175 61 169 52Z'/%3E%3Cpath d='M157 57C153 47 157 37 165 32C170 42 166 51 157 57Z'/%3E%3Cpath d='M180 30C190 23 202 26 207 36C197 43 186 39 180 30Z'/%3E%3C/svg%3E");
+}
+
+.leaf-top-left {
+  left: -48px;
+  top: -48px;
+}
+
+.leaf-bottom-right {
+  right: -48px;
+  bottom: -48px;
+  transform: rotate(180deg);
+}
+
+/* Pequeno ramo ornamental nas páginas internas, com bastante respiro. */
+.page-dress::before,
+.page-gift::before,
+.page-rsvp::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  right: 18px;
+  width: 92px;
+  height: 92px;
+  opacity: .58;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none' stroke='%23b69a65' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M8 112C34 87 47 55 94 9'/%3E%3Cpath d='M27 91C16 79 16 68 22 58C33 69 34 80 27 91Z'/%3E%3Cpath d='M43 70C34 57 37 46 44 39C52 50 51 61 43 70Z'/%3E%3Cpath d='M61 48C55 37 60 26 69 22C74 33 70 42 61 48Z'/%3E%3Cpath d='M34 83C47 78 57 83 61 93C49 98 40 92 34 83Z'/%3E%3Cpath d='M52 60C64 54 75 59 79 69C67 75 58 69 52 60Z'/%3E%3Cpath d='M77 28C75 18 82 11 91 10C92 20 86 26 77 28Z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+@media (max-width: 600px) {
+  .leaf-corner {
+    width: 125px;
+    height: 125px;
+    opacity: .58;
+  }
+  .leaf-top-left { left: -34px; top: -30px; }
+  .leaf-bottom-right { right: -34px; bottom: -30px; }
+  .page-dress::before, .page-gift::before, .page-rsvp::before {
+    width: 62px;
+    height: 62px;
+    top: 8px;
+    right: 8px;
+    opacity: .45;
+  }
+}
+
+/* Ajuste pontual da data e do endereço na primeira aba: tipografia limpa e elegante. */
+.page-couple .couple-info > p:not(.couple-names) {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: .075em;
+  color: rgba(248, 245, 238, .94);
+}
+.page-couple .couple-info > p:nth-child(2) {
+  margin-bottom: 8px;
+  color: #d9c18b;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.page-couple .couple-info > p:nth-child(3) strong {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: .025em;
+}
+
+
+/* Ajuste solicitado: remover ornamentos botânicos e contornos decorativos. */
+.leaf-corner, .page-dress::before, .page-gift::before, .page-rsvp::before { display: none !important; background-image: none !important; border: 0 !important; content: none !important; }
+
+/* Refinamento visual: tipografia da segunda aba e cantos delicados em todas as páginas. */
+.page-invitation .eyebrow {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(9px, .9vw, 12px);
+  font-weight: 500;
+  letter-spacing: .19em;
+  line-height: 1.8;
+}
+.page-invitation .page-content > h1 {
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(32px, 4.1vw, 54px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+.page-invitation .date,
+.page-invitation .time {
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: .16em;
+}
+.page-invitation .location > p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(26px, 2.5vw, 34px);
+  font-style: italic;
+  letter-spacing: .01em;
+}
+
+/* Moldura minimalista dourada nos quatro cantos de cada aba, sem cobrir o conteúdo. */
+.page {
+  background-image:
+    linear-gradient(var(--gold), var(--gold)) , linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(var(--gold), var(--gold)) , linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(var(--gold), var(--gold)) , linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(var(--gold), var(--gold)) , linear-gradient(var(--gold), var(--gold));
+  background-size: 34px 1px, 1px 34px, 34px 1px, 1px 34px, 34px 1px, 1px 34px, 34px 1px, 1px 34px;
+  background-position: 24px 24px, 24px 24px, calc(100% - 24px) 24px, calc(100% - 24px) 24px, 24px calc(100% - 24px), 24px calc(100% - 24px), calc(100% - 24px) calc(100% - 24px), calc(100% - 24px) calc(100% - 24px);
+  background-repeat: no-repeat;
+}
+@media (max-width: 600px) {
+  .page {
+    background-size: 22px 1px, 1px 22px, 22px 1px, 1px 22px, 22px 1px, 1px 22px, 22px 1px, 1px 22px;
+    background-position: 12px 12px, 12px 12px, calc(100% - 12px) 12px, calc(100% - 12px) 12px, 12px calc(100% - 12px), 12px calc(100% - 12px), calc(100% - 12px) calc(100% - 12px), calc(100% - 12px) calc(100% - 12px);
+  }
+}
+
+/* Aba de comemoração no restaurante — mesma identidade visual do convite. */
+.page-restaurant {
+  background: radial-gradient(circle at 50% 0%, rgba(201,163,84,.10), transparent 34%), var(--paper-2);
+  overflow-y: auto;
+}
+.page-restaurant::before,
+.page-restaurant::after {
+  content: "";
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  pointer-events: none;
+  opacity: .72;
+  border-color: var(--gold);
+  border-style: solid;
+}
+.page-restaurant::before { top: 18px; right: 20px; border-width: 1px 1px 0 0; }
+.page-restaurant::after { bottom: 18px; left: 20px; border-width: 0 0 1px 1px; }
+.restaurant-content { width: min(650px, 88vw); padding-top: 42px; padding-bottom: 90px; }
+.restaurant-content h2 { margin: 8px 0 14px; color: var(--navy); font-family: "Playfair Display", "Cormorant Garamond", serif; font-size: clamp(34px, 5vw, 54px); font-weight: 400; line-height: 1.08; }
+.restaurant-content .lead { max-width: 540px; margin: 0 auto 20px; }
+.restaurant-note { margin: 22px auto 24px; padding: 19px 22px; max-width: 520px; border-top: 1px solid rgba(182,154,101,.6); border-bottom: 1px solid rgba(182,154,101,.6); color: #6f6a61; font-size: 12px; line-height: 1.8; }
+.restaurant-note p { margin: 5px 0; }
+.restaurant-note strong { color: var(--navy); font-weight: 600; }
+.restaurant-ornament { display: block; margin-bottom: 5px; color: var(--gold-dark); font-size: 17px; }
+.restaurant-small { color: #8a8275; font-size: 10px; line-height: 1.6; }
+.page-restaurant #restaurantForm { max-width: 520px; margin: 0 auto; text-align: left; }
+.page-restaurant #restaurantForm label { display: block; margin-bottom: 13px; }
+.page-restaurant #restaurantForm label span { display: block; margin-bottom: 6px; color: var(--navy); font-size: 9px; letter-spacing: .17em; }
+.page-restaurant #restaurantForm input,
+.page-restaurant #restaurantForm select { width: 100%; border: 1px solid rgba(182,154,101,.55); border-radius: 2px; background: rgba(255,255,255,.55); padding: 12px 13px; color: var(--navy); font: 12px Montserrat, sans-serif; }
+.page-restaurant #restaurantForm [hidden] { display: none !important; }
+.page-restaurant .submit-button { width: 100%; margin-top: 8px; }
+.page-restaurant .form-status { text-align: center; }
+@media (max-width: 600px) {
+  .restaurant-content { padding-top: 34px; }
+  .page-restaurant::before, .page-restaurant::after { width: 30px; height: 30px; }
+  .page-restaurant::before { top: 10px; right: 10px; }
+  .page-restaurant::after { bottom: 10px; left: 10px; }
+}
+
+/* Destaque para a comemoração no Pampeiros e acesso rápido ao mapa */
+.page-restaurant .restaurant-content { width: min(700px, 90vw); }
+.restaurant-place-card {
+  position: relative; max-width: 540px; margin: 26px auto 22px; padding: 24px 22px 25px;
+  border: 1px solid rgba(182,154,101,.65); background: linear-gradient(135deg, rgba(255,255,255,.82), rgba(248,244,235,.9));
+  box-shadow: 0 12px 32px rgba(11,16,56,.07); text-align: center;
+}
+.restaurant-place-card::before, .restaurant-place-card::after { content: ""; position: absolute; width: 22px; height: 22px; border-color: var(--gold-dark); border-style: solid; }
+.restaurant-place-card::before { top: 7px; left: 7px; border-width: 1px 0 0 1px; }
+.restaurant-place-card::after { right: 7px; bottom: 7px; border-width: 0 1px 1px 0; }
+.restaurant-place-icon { color: var(--gold-dark); font-size: 18px; margin-bottom: 5px; }
+.restaurant-place-kicker { color: var(--gold-dark); font: 500 9px Montserrat, sans-serif; letter-spacing: .22em; margin: 0 0 8px; }
+.restaurant-place-card h3 { margin: 0 0 8px; color: var(--navy); font: 400 clamp(28px, 4vw, 36px) "Playfair Display", serif; }
+.restaurant-address { margin: 0 auto 17px; max-width: 400px; color: #716b61; font: 12px/1.7 Montserrat, sans-serif; }
+.restaurant-map-button { display: inline-flex; gap: 12px; align-items: center; justify-content: center; min-width: 210px; }
+.restaurant-form-heading { margin: 30px auto 14px; text-align: center; }
+.restaurant-form-heading h3 { color: var(--navy); font: 400 clamp(25px, 3.5vw, 34px) "Playfair Display", serif; margin: 6px 0 8px; }
+.restaurant-form-frame { max-width: 600px; margin: 0 auto; overflow: hidden; border: 1px solid rgba(182,154,101,.55); background: #fff; box-shadow: 0 10px 30px rgba(11,16,56,.06); }
+.restaurant-form-frame iframe { display: block; border: 0; min-height: 600px; }
+@media (max-width: 520px) { .restaurant-place-card { padding: 22px 15px; } .restaurant-form-frame iframe { height: 700px; } }
+
+/* Formulário do restaurante com o mesmo acabamento da confirmação da cerimônia */
+.page-restaurant .restaurant-rsvp-form { max-width: 520px; margin: 0 auto; padding: 24px clamp(18px, 4vw, 34px); text-align: left; border: 1px solid rgba(182,154,101,.55); background: rgba(255,255,255,.72); box-shadow: 0 10px 30px rgba(11,16,56,.06); position: relative; }
+.page-restaurant .restaurant-rsvp-form::before { content: "✦"; display: block; text-align: center; color: var(--gold, #b69a65); font-size: 17px; margin: -7px 0 17px; }
+.page-restaurant .restaurant-rsvp-form label { display: block; margin-bottom: 15px; }
+.page-restaurant .restaurant-rsvp-form label span { display: block; margin-bottom: 7px; color: var(--navy); font-size: 9px; letter-spacing: .17em; }
+.page-restaurant .restaurant-rsvp-form input, .page-restaurant .restaurant-rsvp-form select { box-sizing: border-box; width: 100%; border: 1px solid rgba(182,154,101,.55); border-radius: 2px; background: rgba(255,255,255,.8); padding: 13px 14px; color: var(--navy); font: 12px Montserrat, sans-serif; }
+.page-restaurant .restaurant-rsvp-form input:focus, .page-restaurant .restaurant-rsvp-form select:focus { outline: 1px solid var(--gold, #b69a65); outline-offset: 2px; }
+.page-restaurant .restaurant-rsvp-form [hidden] { display: none !important; }
+.page-restaurant .restaurant-rsvp-form .restaurant-form-reminder { text-align: center; line-height: 1.7; margin: 18px 0 12px; }
+.page-restaurant .restaurant-rsvp-form .submit-button { width: 100%; margin-top: 8px; }
+.page-restaurant .restaurant-rsvp-form .form-status { text-align: center; }
+
+
+/* Garante que o botão do restaurante realmente suma para quem não confirmou a cerimônia. */
+#goToRestaurant[hidden] { display: none !important; }

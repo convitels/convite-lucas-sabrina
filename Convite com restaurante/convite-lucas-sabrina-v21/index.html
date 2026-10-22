@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1038" />
+  <title>Lucas & Sabrina | 12.12.2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="site">
+
+    <!-- 01 — ABERTURA / FOTO DO CASAL -->
+    <section class="page page-couple active" id="couple" aria-label="Lucas e Sabrina">
+      <div class="couple-photo-panel">
+        <div class="couple-black-panel">
+          <div class="couple-info">
+            <p class="couple-names">Sabrina e Lucas</p>
+            <p>12 de dezembro de 2026</p>
+            <p><strong>Rua Corcovado, 1.255 | Universal Vila Sônia</strong></p>
+          </div>
+        </div>
+        <div class="couple-photo-area" aria-label="Foto do casal">
+          <div class="couple-photo-placeholder">
+            <img src="assets/fotos/capa.jpeg" alt="Lucas e Sabrina" onerror="this.onerror=null; this.src='assets/fotos/capa.jpg'">
+            <span>COLOQUE AQUI<br>A FOTO DO CASAL</span>
+          </div>
+        </div>
+        <div class="couple-circle">
+          <div class="couple-circle-photo">
+            <img src="assets/fotos/circulo.jpeg" alt="Lucas e Sabrina" onerror="this.onerror=null; this.src='assets/fotos/circulo.jpg'">
+            <span>FOTO<br>DO CASAL</span>
+          </div>
+        </div>
+      </div>
+      <button class="next-arrow" data-next aria-label="Próxima página">→</button>
+    </section>
+
+    <!-- =========================
+         02 — CONVITE / FOTOS
+         ========================= -->
+    <section class="page page-invitation" id="invitation" aria-label="Convite">
+      <div class="paper-page">
+
+        <div class="page-content">
+
+          <p class="eyebrow">CARINHOSAMENTE TE CONVIDAMOS PARA A</p>
+          <h1>Cerimônia do nosso casamento</h1>
+          <div class="date">12.12.2026</div>
+          <div class="time">SÁB | 17H</div>
+
+          <div class="countdown" aria-label="Contagem regressiva">
+            <span class="countdown-title">FALTAM</span>
+            <div class="countdown-grid">
+              <div class="count-box"><strong id="days">--</strong><small>DIAS</small></div>
+              <div class="count-box"><strong id="hours">--</strong><small>HORAS</small></div>
+              <div class="count-box"><strong id="minutes">--</strong><small>MIN</small></div>
+              <div class="count-box"><strong id="seconds">--</strong><small>SEG</small></div>
+            </div>
+          </div>
+
+          <div class="photo-slider" id="photoSlider" aria-label="Fotos do casal">
+            <div class="photo-track" id="photoTrack"></div>
+          </div>
+
+          <div class="location">
+            <p>Local</p>
+            <strong>Universal Vila Sônia</strong>
+            <a
+              class="gold-button"
+              target="_blank"
+              rel="noopener"
+              href="https://www.google.com/maps/search/?api=1&query=Universal+Vila+S%C3%B4nia%2C+R.+Corcovado%2C+1255%2C+Piracicaba+-+SP"
+            >COMO CHEGAR</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="prev-arrow" data-prev aria-label="Página anterior">←</button>
+      <button class="next-arrow" data-next aria-label="Próxima página">→</button>
+    </section>
+
+    <!-- =========================
+         03 — DRESS CODE
+         ========================= -->
+    <section class="page page-dress" id="dress" aria-label="Dress code">
+      <div class="content-narrow">
+        <p class="eyebrow">DRESS CODE</p>
+        <h2>Cores escolhidas<br>com carinho</h2>
+        <p class="lead">
+          Para deixar nossa celebração ainda mais harmoniosa, algumas cores foram
+          reservadas para pessoas especiais.
+        </p>
+
+        <div class="dress-grid">
+          <article class="dress-card">
+            <div class="color-circle navy"></div>
+            <small>PADRINHOS</small>
+            <h3>Azul-marinho</h3>
+          </article>
+
+          <article class="dress-card">
+            <div class="color-circle marsala"></div>
+            <small>FAMÍLIA</small>
+            <h3>Marsala</h3>
+          </article>
+        </div>
+
+        <p class="dress-note">
+          Pedimos, com carinho, que os demais convidados evitem azul-marinho e
+          marsala, pois essas cores estarão destinadas aos padrinhos e familiares.
+        </p>
+      </div>
+
+      <button class="prev-arrow" data-prev aria-label="Página anterior">←</button>
+      <button class="next-arrow" data-next aria-label="Próxima página">→</button>
+    </section>
+
+    <!-- =========================
+         05 — RSVP
+         ========================= -->
+    <section class="page page-rsvp" id="rsvp" aria-label="Confirmação de presença">
+      <div class="content-form">
+        <p class="eyebrow">CONFIRMAÇÃO DE PRESENÇA</p>
+        <h2>Você vem<br>celebrar com a gente?</h2>
+        <p class="lead">Confirme sua presença para nos ajudar a preparar cada detalhe desse dia.</p>
+
+        <!--
+          IMPORTANTE:
+          Este formulário já está pronto visualmente.
+          Para salvar automaticamente no Google Forms, preencha no script.js
+          os dados do seu formulário e os entry IDs de cada pergunta.
+        -->
+        <form id="rsvpForm">
+          <label>
+            <span>NOME COMPLETO</span>
+            <input type="text" name="nome" placeholder="Digite seu nome" required>
+          </label>
+
+          <label>
+            <span>PRESENÇA</span>
+            <select name="presenca" required>
+              <option value="">Selecione</option>
+              <option value="Sim, estarei presente">Sim, estarei presente</option>
+              <option value="Não poderei comparecer">Não poderei comparecer</option>
+            </select>
+          </label>
+
+          <div id="extraRsvpFields" class="rsvp-extra" hidden>
+            <label>
+              <span>QUANTIDADE DE ACOMPANHANTES</span>
+              <input type="number" name="acompanhantes" min="0" max="10" value="0">
+            </label>
+
+            <label>
+              <span>NOME DOS ACOMPANHANTES</span>
+              <textarea name="nomes_acompanhantes" rows="2" placeholder="Um nome por linha"></textarea>
+            </label>
+
+            <label>
+              <span>UMA MENSAGEM PARA O CASAL</span>
+              <textarea name="mensagem" rows="2" placeholder="Deixe um carinho para nós..."></textarea>
+            </label>
+          </div>
+
+          <button type="submit" class="gold-button submit-button" id="submitRsvp">CONFIRMAR PRESENÇA</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <button class="prev-arrow" data-prev aria-label="Página anterior">←</button>
+    </section>
+
+    <!-- =========================
+         06 — MENSAGEM APÓS CONFIRMAÇÃO
+         ========================= -->
+    <section class="page page-response" id="responseYes" aria-label="Mensagem de confirmação">
+      <div class="response-content">
+        <p class="eyebrow">COM CARINHO</p>
+        <h2 id="responseTitle">Aguardamos você!</h2>
+        <p class="response-text" id="responseText">
+          Será uma alegria celebrar esse momento tão especial ao seu lado.
+        </p>
+        <div class="response-mark">♡</div>
+
+        <div class="pix-after-confirmation" id="pixAfterConfirmation" hidden>
+          <div class="pix-divider" aria-hidden="true"></div>
+          <p class="eyebrow pix-eyebrow">SE DESEJAR NOS PRESENTEAR</p>
+          <h3 class="pix-title">Um carinho para nossa nova etapa</h3>
+          <p class="pix-message">Sua presença já é o maior presente. Mas, se quiser contribuir com nossa nova etapa, deixamos esta opção com muito carinho. É totalmente opcional.</p>
+          <div class="pix-card">
+            <div class="qr-wrap">
+              <div id="pixQr" class="qr-placeholder">
+                <img src="assets/qr-code-pix.png" alt="QR Code Pix">
+              </div>
+            </div>
+            <button type="button" class="gold-button copy-button" id="copyPix">COPIAR PIX</button>
+            <span class="copy-feedback" id="copyFeedback" aria-live="polite"></span>
+          </div>
+        </div>
+        <button type="button" class="gold-button response-back" id="goToRestaurant" hidden>CONFIRMAR NO RESTAURANTE</button>
+        <button type="button" class="gold-button response-back" id="backToInvitation">VOLTAR AO CONVITE</button>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         07 — COMEMORAÇÃO NO RESTAURANTE
+         ========================= -->
+    <section class="page page-restaurant" id="restaurant" aria-label="Comemoração no restaurante">
+      <div class="content-form restaurant-content">
+        <p class="eyebrow">DEPOIS DO SIM, VAMOS COMEMORAR!</p>
+        <h2>Vamos celebrar<br>mais um pouquinho?</h2>
+        <p class="lead">Após a cerimônia, queremos continuar esse dia especial com você no <strong>Pampeiros Grill</strong>.</p>
+        <div class="restaurant-place-card">
+          <div class="restaurant-place-icon" aria-hidden="true">✦</div>
+          <p class="restaurant-place-kicker">NOSSA COMEMORAÇÃO</p>
+          <h3>Pampeiros Grill</h3>
+          <p class="restaurant-address">Rodovia Luiz de Queiroz (SP-304), km 148 — Tupi, Piracicaba</p>
+          <a class="gold-button restaurant-map-button" href="https://maps.app.goo.gl/3VFP4RqNAWACo1ae7" target="_blank" rel="noopener">COMO CHEGAR <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="restaurant-note">
+          <span class="restaurant-ornament" aria-hidden="true">✦</span>
+          <p>Será um momento descontraído para comer, conversar e comemorar juntos.</p>
+          <p><strong>Cada convidado pagará o próprio consumo.</strong></p>
+          <p class="restaurant-small">A participação é opcional. Só queremos nos organizar direitinho com o restaurante.</p>
+        </div>
+        <div class="restaurant-form-heading">
+          <p class="eyebrow">RESERVA DE PRESENÇA</p>
+          <h3>Você vem comemorar com a gente?</h3>
+          <p class="restaurant-small">Preencha a confirmação abaixo para nos ajudar a organizar esse encontro.</p>
+        </div>
+        <form id="restaurantForm" class="restaurant-rsvp-form">
+          <label>
+            <span>NOME COMPLETO</span>
+            <input type="text" name="nome_restaurante" placeholder="Digite seu nome" autocomplete="name" required>
+          </label>
+          <label>
+            <span>VOCÊ VAI AO PAMPEIROS?</span>
+            <select name="presenca_restaurante" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Sim, estarei no Pampeiros">Sim, estarei presente!</option>
+              <option value="Não poderei participar">Infelizmente, não poderei participar</option>
+            </select>
+          </label>
+          <div id="restaurantGuestsWrap" class="restaurant-guests-wrap" hidden>
+            <label>
+              <span>QUANTAS PESSOAS IRÃO, CONTANDO VOCÊ?</span>
+              <select name="quantidade_restaurante">
+                <option value="">Selecione a quantidade</option>
+                <option value="1 pessoa">1 pessoa</option>
+                <option value="2 pessoas">2 pessoas</option>
+                <option value="3 pessoas">3 pessoas</option>
+                <option value="4 pessoas">4 pessoas</option>
+                <option value="5 pessoas ou mais">5 pessoas ou mais</option>
+              </select>
+            </label>
+          </div>
+          <p class="restaurant-small restaurant-form-reminder">Lembrando: cada convidado ficará responsável pelo próprio consumo no restaurante.</p>
+          <button type="submit" class="gold-button submit-button">ENVIAR RESPOSTA</button>
+          <p class="form-status" id="restaurantStatus" aria-live="polite"></p>
+        </form>
+      </div>
+      <button class="prev-arrow" data-prev aria-label="Página anterior">←</button>
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
